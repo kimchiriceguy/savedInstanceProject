@@ -19,9 +19,6 @@ class MainActivity : AppCompatActivity() {
     var counter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d("message", "A1 onCreate")
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
