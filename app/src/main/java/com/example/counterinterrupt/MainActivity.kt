@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-private const val dummy = "dummy"
+private const val key = "key"
 
 class MainActivity : AppCompatActivity() {
     lateinit var textView : TextView
@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     var counter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("message", "A1 onCreate")
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -44,13 +47,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("dummy", counter)
+        outState.putInt("key", counter)
         Log.d("message", "A1 Saving State: $counter")
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        counter = savedInstanceState.getInt("counter_key")
+        counter = savedInstanceState.getInt("key")
         textView.text = counter.toString()
         Log.d("message", "A1 Restored State: $counter")
     }
